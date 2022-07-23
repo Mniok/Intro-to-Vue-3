@@ -19,7 +19,7 @@
           </div>
           <div class="product-info">
             <h1>{{ product }}</h1>
-			<p v-if="inStock">In stock</p>
+			<p v-if="inStock">In stock</p> <!-- alternatywa: v-show="eval true albo false" - more performant option when toggling sth often - v-show nakłada style="display:none;" a v-if nie dodaje wcale (jeśli jest false) -->
 			<p v-else>Out of stock</p>
           </div>
         </div>
