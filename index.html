@@ -6,14 +6,20 @@
     <!-- Import Styles -->
     <link rel="stylesheet" href="./assets/styles.css" />
     <!-- Import Vue.js -->
-    <script src="https://unpkg.com/vue@3.0.11/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
   </head>
   <body>
     <div id="app">
-      <h1>Product goes here</h1>
-    </div>
+      <h1>{{product}}</h1> <!-- app.product -->
+	  <p>{{description}}</p>
+    </div> <!-- {{...}} ("mustache syntax") runs valid javascript (HTML-escaped). np.: {{a + b}}, {{clicked ? true : false}}, {{ coś.coś() }} etc. -->
 
-    <!-- Import Js -->
-    <script src="./main.js"></script>
+    <!-- Import App -->
+    <script src="./main.js"></script> <!-- stąd pochodzi const app do app.mount -->
+	
+	<!-- Mount App -->
+    <script>
+		const mountedApp = app.mount('#app') //wrzuca do diva o id app. TYLKO TEN 1 DIV MA DOSTĘP DO APKI!
+	</script>
   </body>
 </html>
