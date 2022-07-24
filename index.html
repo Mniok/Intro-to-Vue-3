@@ -26,8 +26,16 @@
             <ul>
               <li v-for="detail in details">{{ detail }}</li>
             </ul>
-            <div v-for="variant in variants" :key="variant.id">{{ variant.color }}</div>
-            <button class="button">Add to Cart</button>
+            <div v-for="variant in variants" :key="variant.id" @mouseover="updateImage(variant.image)">{{ variant.color }}</div>
+															<!-- v-on:mouseover - jak onmouseover="js" (albo :hover w CSSsie) -->
+			
+            <!-- <button class="button" v-on:click="cart++">Add to Cart</button> --> <!-- v-on:event="js logic" -->
+			<button class="button" v-on:click="addToCart()">Add to Cart</button> <!-- v-on:event="method" - w tym przypadku mountedApp.addToCart() -->
+			<!-- also w tutorialu było samo "addToCart" bez () i działało, ale dodaję () dla czytelnośći -->
+			<button class="button" @click="addToCartCount(5)">Bonus moje: Add 5 to cart</button>
+							<!-- @event - shorthand dla v-on:event -->
+							
+			<button class="button" @click="cart>0 ? cart-- : 0">decrement cart</button> <!-- coding challenge -->
           </div>
         </div>
       </div>
