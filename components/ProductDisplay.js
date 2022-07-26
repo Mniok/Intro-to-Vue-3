@@ -21,9 +21,8 @@ app.component('product-display', {
 			
 			<p>Shipping: {{ shipping }}</p> <!-- nowe - computedproperty shipping używa prop premium passowanego z maina -->  
 			
-            <ul>
-              <li v-for="detail in details">{{ detail }}</li>
-            </ul>
+            <!-- tu było <ul> product details -->
+			<product-details :details="details"></product-details>
 
             <div 
               v-for="(variant, index) in variants" 
@@ -41,7 +40,7 @@ app.component('product-display', {
 	  //nie rejestrowało się jako string z jakiegoś powodu gdy było 'apostrofach' chociaż niby powinny być multiline
 	  // `backticks` (to gdzie tylda! `~) to `template literal` i jest multiline 
 	  
-	  data() {
+	data() {
         return {
             //cart: 0, //to jest globalne a nie dla każdego produktu, więc nie w komponencie
             product: 'Socks',
