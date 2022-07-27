@@ -15,9 +15,9 @@
       <div class="cart">Cart({{ cart.length }})</div>
       
       <!-- rzeczy stąd poszły do template komponentu w ProductDisplay.js -->
-	  <product-display :premium="premium" @add-to-cart="updateCart"></product-display> <!-- komponent "product-display" z ProductDisplay.js -->
-	  <product-display :premium="premium" @add-to-cart="updateCart"></product-display> <!-- :[productdisplay prop premium]="[main app data premium]" - binduje wartość premium z main app scope do komponentu -->
-	  <product-display :premium="premium" @add-to-cart="updateCart"></product-display>
+	  <product-display :premium="premium" @add-to-cart="updateCart" @remove-from-cart="tryRemoveFromCart"></product-display> <!-- komponent "product-display" z ProductDisplay.js -->
+	  <product-display :premium="premium" @add-to-cart="updateCart" @remove-from-cart="tryRemoveFromCart"></product-display> <!-- :[productdisplay prop premium]="[main app data premium]" - binduje wartość premium z main app scope do komponentu -->
+	  <product-display :premium="premium" @add-to-cart="updateCart" @remove-from-cart="tryRemoveFromCart"></product-display> <!-- coding challenge - remove from cart - usuwa z arraya tylko jeśli jest -->
 
     </div>
 

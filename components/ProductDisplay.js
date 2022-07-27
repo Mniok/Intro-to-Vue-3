@@ -37,6 +37,15 @@ app.component('product-display', {
           v-on:click="addToCart">
           Add to Cart
         </button>
+		
+		<!-- coding challenge - remove from cart -->
+		<button 
+          class="button" 
+          v-on:click="removeFromCart">
+          remove this item from cart (if it's in there)
+        </button>
+		
+		
       </div>
     </div>
   </div>`,
@@ -53,7 +62,7 @@ app.component('product-display', {
             details: ['50% cotton', '30% wool', '20% polyester'],
             variants: [
               { id: 2234, color: 'green', image: './assets/images/socks_green.jpg', quantity: 50 },
-              { id: 2235, color: 'blue', image: './assets/images/socks_blue.jpg', quantity: 0 },
+              { id: 2235, color: 'blue', image: './assets/images/socks_blue.jpg', quantity: 69 },
             ]
         }
     },
@@ -69,7 +78,18 @@ app.component('product-display', {
 		},
         updateVariant(index) {
             this.selectedVariant = index
-        }
+        },
+		
+		removeFromCart() {	//coding challenge L10
+			this.$emit('remove-from-cart', this.variants[this.selectedVariant].id)
+			
+			//testy w konsoli:
+			//mountedApp.updateCart(2137)
+			//mountedApp.cart
+			//mountedApp.cart.includes(2234)
+			//mountedApp.cart.indexOf(2234)
+			//rem = mountedApp.cart.splice(mountedApp.cart.indexOf(2138), 1) //uwaga! najpierw check bo jeśli nie ma to usuwa ostatnie!
+		}
     },
 	
     computed: {
@@ -86,6 +106,6 @@ app.component('product-display', {
 		shipping() {
 			if (this.premium) return "Free"
 			return 2.99
-		}	//do testów tego w konsoli: mountedApp.premium = false 
+		}	//do testów tego w konsoli: mountedApp.premium = false
 	}
 })
